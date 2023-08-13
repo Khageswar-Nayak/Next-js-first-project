@@ -6,20 +6,21 @@ const details = [
   { id: 3, name: "Suresh", role: "Frontend Developer" },
 ];
 
-function AboutUsPage() {
-  const router = useRouter();
-  const id = router.query.id;
-  const detail = details.find((item) => item.id === parseInt(id));
+function DetailsPage() {
+  const route = useRouter();
+  const id = route.query.id;
+
+  const detail = details.find((obj) => obj.id === parseInt(id));
 
   if (!detail) {
-    return <p>Developer doesn't exist</p>;
+    return <h2>developer not found</h2>;
   }
 
   return (
-    <div>
-      <h1>{detail.name}</h1>
-      <p>{detail.role}</p>
-    </div>
+    <h2>
+      {detail.name} {detail.role}
+    </h2>
   );
 }
-export default AboutUsPage;
+
+export default DetailsPage;
